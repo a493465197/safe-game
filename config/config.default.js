@@ -51,7 +51,7 @@ module.exports = appInfo => {
   // }
   config.mongoose = {
     client:{
-    url:'mongodb://root:signzraipi@124.221.66.29:27017/sign',
+    url:'mongodb://root:safeGamezraipi@124.221.66.29:27017/safeGame',
     options:{}
     }
   }
