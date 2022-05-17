@@ -37,6 +37,7 @@ module.exports = app => {
   router.post('/api/getKeyAuthList', controller.api.getKeyAuthList);
   router.post('/api/agreeGetKeyAuth', controller.api.agreeGetKeyAuth);
   router.post('/api/getCode', controller.api.getCode);
+  router.post('/api/addScore', controller.api.addScore);
 
 
   router.post('/common/upload', controller.common.upload);

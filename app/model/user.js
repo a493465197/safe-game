@@ -36,7 +36,8 @@ module.exports = app => {
         },
         auth: {
             type: Array
-        }
+        },
+        score: Number
 
     });
     return mongoose.model('User', UserSchema, 'user');

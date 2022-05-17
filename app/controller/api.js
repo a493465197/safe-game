@@ -184,19 +184,10 @@ class HomeController extends Controller {
       ctx
     } = this;
     const username = ctx.cookies.get('user')
-    let user = await this.ctx.model.User.findOne({
-      username
-    });
-    if (user && user.isAdmin) {
-      let users = await this.ctx.model.User.find();
-      ctx.body = {
-        code: 0,
-        value: users
-      }
-    } else {
-      ctx.body = {
-        code: -1,
-      }
+    let users = await this.ctx.model.User.find();
+    ctx.body = {
+      code: 0,
+      value: users
     }
 
   }
@@ -568,6 +559,20 @@ class HomeController extends Controller {
     ctx.body = {
       code: 0,
       value: captcha
+    }
+  }
+  async addScore() {
+    const {
+      ctx
+    } = this;
+    const username = ctx.cookies.get('user')
+    const user = await this.ctx.model.User.findOne({username})
+    await this.ctx.model.User.updateOne({username}, {
+      // ...user,
+      score: (user.score || 0) + (ctx.request.body.num || 1)
+    })
+    ctx.body = {
+      code: user
     }
   }
   async init() {
